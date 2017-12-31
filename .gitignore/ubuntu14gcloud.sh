@@ -3,7 +3,7 @@
 # go to root
 cd
 
-wget -O /etc/ssh/sshd_config "https://raw.githubusercontent.com/akuazli/googlecloud/master/sshd_config"
+wget -P /etc/ssh/sshd_config "https://raw.githubusercontent.com/akuazli/googlecloud/master/sshd_config"
 service ssh restart
 rm sshd_config
 
@@ -30,7 +30,7 @@ apt-get -y install nano
 # Install Squid
 apt-get -y install squid
 cp /etc/squid3/squid.conf /etc/squid3/squid.conf.orig
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/akuazli/centos6/master/squidazli" 
+wget -P /etc/squid3/squid.conf "https://raw.githubusercontent.com/akuazli/centos6/master/squidazli" 
 #MYIP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | grep -v '192.168'`;
 #sed -i s/xxxxxxxxx/$MYIP/g /etc/squid3/squid.conf;
 service squid3 restart
