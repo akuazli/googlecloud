@@ -3,10 +3,6 @@
 # go to root
 cd
 
-wget -P /etc/ssh/sshd_config "https://raw.githubusercontent.com/akuazli/googlecloud/master/sshd_config"
-service ssh restart
-rm sshd_config
-
 # disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
@@ -28,9 +24,9 @@ service pritunl start
 apt-get -y install nano
 
 # Install Squid
-apt-get -y install squid
+apt-get -y install squid3
 cp /etc/squid3/squid.conf /etc/squid3/squid.conf.orig
-wget -P /etc/squid3/squid.conf "https://raw.githubusercontent.com/akuazli/centos6/master/squidazli" 
+#wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/asyrafazhan/AUTO-PRITUNL/master/conf/squid.conf" 
 #MYIP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | grep -v '192.168'`;
 #sed -i s/xxxxxxxxx/$MYIP/g /etc/squid3/squid.conf;
 service squid3 restart
@@ -84,6 +80,9 @@ echo "-Pritunl"
 echo "-MongoDB"
 echo "-Vnstat"
 echo "-Web Server"
+echo "-Squid Proxy Port 65000/60020"
+echo "Autoscript Ini Daripada AsyrafAzhan"
+echo "Telegram @aaron_3796"
 echo "TimeZone   :  Malaysia"
 echo "Vnstat     :  http://$MYIP:81/vnstat"
 echo "Pritunl    :  https://$MYIP"
