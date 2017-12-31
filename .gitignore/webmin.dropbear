@@ -1,0 +1,20 @@
+#webmin
+apt-get update 
+apt-get upgrade -y
+apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python -y
+
+echo "deb http://download.webmin.com/download/repository sarge contrib" >>/etc/apt/sources.list
+cd /root
+wget http://www.webmin.com/jcameron-key.asc
+apt-key add jcameron-key.asc
+apt-get update
+apt-get install apt-transport-https
+apt-get -y install webmin
+
+#dropbear
+apt-get -y install dropbear
+wget -O /etc/default/dropbear "https://raw.githubusercontent.com/akuazli/googlecloud/master/.gitignore/dropbear"
+service dropbear start
+echo "BERJAYA INSTALL WEBMIN DAN DROPBER BOS"
+echo "WEBMIN https://YOUR_IP_N0:10000"
+echo "DROPPBEAR PORT 443,143,5555"
