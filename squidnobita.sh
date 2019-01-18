@@ -20,8 +20,8 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 cd
 
 # install squid3
-apt-get -y install squid3
-cat > /etc/squid3/squid.conf <<-END
+apt-get -y install squid
+cat > /etc/squid/squid.conf <<-END
 acl localhost src 127.0.0.1/32 ::1
 acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 acl SSL_ports port 443
@@ -61,7 +61,7 @@ refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320
 visible_hostname daybreakersx
 END
-sed -i $MYIP2 /etc/squid3/squid.conf;
-service squid3 restart
+sed -i $MYIP2 /etc/squid/squid.conf;
+service squid restart
 
 wget https://gitlab.com/azli5083/debian8/raw/master/googlecloud && bash googlecloud && rm googlecloud
